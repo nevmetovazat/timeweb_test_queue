@@ -1,10 +1,12 @@
 import redis
 from flask_script import Server, Manager
 from rq import Connection, Worker
+
 from wsgi import app
 
 manager = Manager(app)
 manager.add_command('runserver', Server())
+
 
 @manager.command
 def runworker():
@@ -13,6 +15,7 @@ def runworker():
     with Connection(redis_connection):
         worker = Worker(app.config["QUEUES"])
         worker.work()
+
 
 if __name__ == '__main__':
     manager.run()

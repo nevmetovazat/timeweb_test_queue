@@ -1,5 +1,5 @@
-from flask import current_app
 import requests
+
 
 def scrape(url):
     r = requests.get(url)
