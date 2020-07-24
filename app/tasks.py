@@ -4,4 +4,4 @@ import requests
 def scrape(url):
     r = requests.get(url)
     r.raise_for_status()
-    return {'headers': r.headers, 'content': r.text}
+    return {'headers': dict(r.headers), 'content': r.text}
