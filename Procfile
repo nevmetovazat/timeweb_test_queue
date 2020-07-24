@@ -1,2 +1,2 @@
-web: gunicorn wsgi.app
+web: gunicorn wsgi:app
 worker: python manage.py runworker
