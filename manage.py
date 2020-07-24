@@ -1,9 +1,8 @@
 import redis
 from flask_script import Server, Manager
 from rq import Connection, Worker
-from app import create_app
+from wsgi import app
 
-app = create_app()
 manager = Manager(app)
 manager.add_command('runserver', Server())
 
